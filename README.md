@@ -101,7 +101,7 @@ updateDetection:
           tag: latest
 ```
 
-[View Full Configuration Guide](./docs/configuration.md)
+[View Full Configuration Guide](docs/configuration.md)
 
 ### Deployment Strategies
 
@@ -121,7 +121,7 @@ deployment:
   activeService: blue
 ```
 
-[View Deployment Guide](./docs/deployment.md)
+[View Deployment Guide](docs/deployment.md)
 
 ## 🔧 Advanced Usage
 
