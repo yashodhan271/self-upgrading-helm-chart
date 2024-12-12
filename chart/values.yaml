@@ -1,0 +1,76 @@
+# Default values for self-upgrading-chart
+
+# Update Detection Configuration
+updateDetection:
+  enabled: true
+  interval: 300  # Check every 5 minutes
+  sources:
+    - type: container
+      registry: docker.io
+      repositories:
+        - name: nginx
+          tag: latest
+    - type: helm
+      repositories:
+        - name: bitnami
+          url: https://charts.bitnami.com/bitnami
+
+# Deployment Strategy
+deployment:
+  strategy: canary  # Options: canary, blueGreen
+  replicas: 3
+  canary:
+    steps:
+      - percentage: 25
+        interval: 300  # 5 minutes
+      - percentage: 50
+        interval: 300
+      - percentage: 75
+        interval: 300
+  blueGreen:
+    activeService: blue
+    transitionDelay: 300
+
+# Health Checks
+healthCheck:
+  enabled: true
+  path: /health
+  port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  failureThreshold: 3
+
+# Rollback Configuration
+rollback:
+  enabled: true
+  maxRetries: 3
+  timeout: 600  # 10 minutes
+  metrics:
+    - type: cpu
+      threshold: 80
+    - type: memory
+      threshold: 85
+    - type: errorRate
+      threshold: 1
+
+# Monitoring
+prometheus:
+  enabled: true
+
+grafana:
+  enabled: true
+
+# Resource Limits
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+# Security Context
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 2000

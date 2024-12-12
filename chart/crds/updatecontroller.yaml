@@ -1,0 +1,83 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: updatecontrollers.helm.self-upgrading.io
+spec:
+  group: helm.self-upgrading.io
+  names:
+    kind: UpdateController
+    listKind: UpdateControllerList
+    plural: updatecontrollers
+    singular: updatecontroller
+    shortNames:
+      - uc
+  scope: Namespaced
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required:
+                - source
+                - updatePolicy
+              properties:
+                source:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum: [container, helm]
+                    registry:
+                      type: string
+                    repository:
+                      type: string
+                    tag:
+                      type: string
+                updatePolicy:
+                  type: object
+                  properties:
+                    interval:
+                      type: integer
+                      minimum: 60
+                    strategy:
+                      type: string
+                      enum: [canary, blueGreen]
+                    autoApprove:
+                      type: boolean
+                rollbackPolicy:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    maxRetries:
+                      type: integer
+                    metrics:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          threshold:
+                            type: number
+            status:
+              type: object
+              properties:
+                lastChecked:
+                  type: string
+                  format: date-time
+                currentVersion:
+                  type: string
+                latestVersion:
+                  type: string
+                updateStatus:
+                  type: string
+                  enum: [idle, updating, failed, succeeded]
+                lastUpdateTime:
+                  type: string
+                  format: date-time
