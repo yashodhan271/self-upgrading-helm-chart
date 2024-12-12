@@ -5,7 +5,7 @@
 [![Helm Version](https://img.shields.io/badge/Helm-v3.0%2B-blue.svg)](https://helm.sh)
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.19%2B-326CE5.svg?logo=kubernetes&logoColor=white)](https://kubernetes.io)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/yourusername/self-upgrading-helm-chart/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/yashodhan271/self-upgrading-helm-chart/graphs/commit-activity)
 
 <img src="https://helm.sh/img/helm.svg" alt="Helm Logo" width="150" height="150">
 
@@ -153,7 +153,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/self-upgrading-helm-chart
+git clone https://github.com/yashodhan271/self-upgrading-helm-chart
 
 # Install dependencies
 make setup
@@ -178,7 +178,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ by the DevOps Community**
 
-[Report Bug](https://github.com/yourusername/self-upgrading-helm-chart/issues) •
-[Request Feature](https://github.com/yourusername/self-upgrading-helm-chart/issues)
+[Report Bug](https://github.com/yashodhan271/self-upgrading-helm-chart/issues) •
+[Request Feature](https://github.com/yashodhan271/self-upgrading-helm-chart/issues)
 
 </div>
